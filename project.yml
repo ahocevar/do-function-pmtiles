@@ -2,4 +2,4 @@ packages:
   - name: pmtiles
     functions:
       - name: zxy
-        runtime: 'nodejs:default'
+        runtime: 'nodejs:18'
