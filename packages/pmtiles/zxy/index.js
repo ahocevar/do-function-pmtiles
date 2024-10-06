@@ -42,7 +42,7 @@ export async function main(event, context) {
         "Content-Type": "text/plain"
       },
       statusCode: 500,
-      body: err.stack
+      body: err.stack + "\n" + JSON.stringify(event, null, 2)
     }
   }
 }
