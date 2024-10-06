@@ -18,7 +18,7 @@ export async function main(event, context) {
       }
     }
     const pmHeader = await pmtiles.getHeader();
-    if (event.headers['If-None-Match'].endsWith(pmHeader.etag)) {
+    if (event.headers?.['If-None-Match']?.endsWith(pmHeader.etag)) {
       return { statusCode: 304 }
     }
     const [, z, x, y] = path.match(tileUrlRegex).map(Number);
