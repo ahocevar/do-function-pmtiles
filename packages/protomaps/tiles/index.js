@@ -1,7 +1,7 @@
 import { PMTiles } from "pmtiles";
 
 const url = process.env.PMTILES_URL;
-const tileUrlRegex = /^\/([0-9]+)\/([0-9]+)\/([0-9]+).mvt$/;
+const tileUrlRegex = /^\/([0-9]+)\/([0-9]+)\/([0-9]+).(mvt|png|jpg|webp|avif)$/;
 
 const contentTypes = [
   'application/octet-stream',
