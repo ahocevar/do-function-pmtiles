@@ -3,6 +3,15 @@ import { PMTiles } from "pmtiles";
 const url = process.env.PMTILES_URL;
 const tileUrlRegex = /^\/([0-9]+)\/([0-9]+)\/([0-9]+).mvt$/;
 
+const contentTypes = [
+  'application/octet-stream',
+  'application/x-protobuf',
+  'image/png',
+  'image/jpeg',
+  'image/webp',
+  'image/avif'
+]
+
 const pmtiles = new PMTiles(url);
 
 export async function main(event, context) {
@@ -31,7 +40,7 @@ export async function main(event, context) {
     }
     return {
       headers: {
-        "Content-Type": pmHeader.tileType,
+        "Content-Type": contentTypes[pmHeader.tileType],
         "ETag": pmHeader.etag
       },
       body: btoa(
