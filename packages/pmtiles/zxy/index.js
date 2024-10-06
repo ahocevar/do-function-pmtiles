@@ -1,7 +1,7 @@
 import { PMTiles } from "pmtiles";
 
 const url = process.env.PMTILES_URL;
-const tileUrlRegex = /^([0-9]+)\/([0-9]+)\/([0-9]+).mvt$/;
+const tileUrlRegex = /^\/([0-9]+)\/([0-9]+)\/([0-9]+).mvt$/;
 
 const pmtiles = new PMTiles(url);
 
@@ -9,7 +9,7 @@ export async function main(event, context) {
   try {
     const path = event.http.path;
     if (!path) {
-      const tileJson = await pmtiles.getTileJson(url);
+      const tileJson = await pmtiles.getTileJson(context.apiHost + context.functionName);
       return {
         headers: {
           "Content-Type": "application/json"
