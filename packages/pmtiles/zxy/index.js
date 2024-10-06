@@ -21,7 +21,7 @@ export async function main(event, context) {
     if (event.headers?.['If-None-Match']?.endsWith(pmHeader.etag)) {
       return { statusCode: 304 }
     }
-    const [, z, x, y] = path.match(tileUrlRegex).map(Number);
+    const [z, x, y] = path.match(tileUrlRegex).slice(1).map(Number);
     if (z < pmHeader.minZoom || z > pmHeader.maxZoom) {
       return { statusCode: 404 }
     }
