@@ -1,5 +1,5 @@
 packages:
-  - name: sample
-    actions:
-      - name: hello
+  - name: pmtiles
+    functions:
+      - name: zxy
         runtime: 'nodejs:default'

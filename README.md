@@ -13,22 +13,22 @@ This repository contains a sample function written in Node.js JavaScript. You ca
 
 ```
 # clone this repo
-git clone git@github.com:digitalocean/sample-functions-nodejs-helloworld.git
+git clone git@github.com:ahocevar/do-function-pmtiles.git
 ```
 
 ```
 # deploy the project, using a remote build so that compiled executable matched runtime environment
-doctl serverless deploy sample-functions-nodejs-helloworld --remote-build
+doctl serverless deploy do-function-pmtiles --remote-build
 ```
 
 The output from the deploy command will resemble the following.
 ```
-Deploying 'sample-functions-nodejs-helloworld'
+Deploying 'do-function-pmtiles'
   to namespace 'fn-...'
   on host '...'
 Submitted function 'sample/hello' for remote building and deployment in runtime nodejs:default (id: ...)
 Processing of action 'sample/hello' is still running remotely ...
-Deployment status recorded in 'sample-functions-nodejs-helloworld/.deployed'
+Deployment status recorded in 'do-function-pmtiles/.deployed'
 
 Deployed functions ('doctl sls fn get <funcName> --url' for URL):
   - sample/hello
