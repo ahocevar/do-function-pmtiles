@@ -34,7 +34,10 @@ export async function main(event, context) {
         "Content-Type": pmHeader.tileType,
         "ETag": pmHeader.etag
       },
-      body: Buffer.from(tileResult.data)
+      body: btoa(
+        new Uint8Array(tileResult.data)
+          .reduce((data, byte) => data + String.fromCharCode(byte), '')
+      )
     }
   } catch (err) {
     return {
