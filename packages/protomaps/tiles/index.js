@@ -12,21 +12,27 @@ const contentTypes = [
   'image/avif'
 ]
 
+const defaultHeaders = {
+  'Cache-Control': 'public, max-age=86400'
+}
+
 const pmtiles = new PMTiles(url);
 
 export async function main(event, context) {
   try {
     const path = event.http.path;
-    if (!path) {
-      const tileJson = await pmtiles.getTileJson(context.apiHost + context.functionName);
+    const pmHeader = await pmtiles.getHeader();
+    if (!path || path === '/') {
+      const tileJson = await pmtiles.getTileJson(context.apiHost + '/api/v1/web' + context.functionName);
       return {
         headers: {
-          "Content-Type": "application/json"
+          ...defaultHeaders,
+          "Content-Type": "application/json",
+          "ETag": pmHeader.etag
         },
         body: JSON.stringify(tileJson)
       }
     }
-    const pmHeader = await pmtiles.getHeader();
     if (event.headers?.['If-None-Match']?.endsWith(pmHeader.etag)) {
       return { statusCode: 304 }
     }
@@ -40,6 +46,7 @@ export async function main(event, context) {
     }
     return {
       headers: {
+        ...defaultHeaders,
         "Content-Type": contentTypes[pmHeader.tileType],
         "ETag": pmHeader.etag
       },

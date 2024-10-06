@@ -7,4 +7,4 @@ packages:
         runtime: 'nodejs:18'
         limits:
           timeout: 5000
-          memory: 1024
+          memory: 256
