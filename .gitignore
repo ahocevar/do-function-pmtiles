@@ -5,3 +5,6 @@ node_modules
 .DS_Store
 coverage/
 package-lock.json
+.env
+.env.*
+.deployed

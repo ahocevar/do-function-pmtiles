@@ -1,5 +1,10 @@
+environment:
+  PMTILES_URL: "${PMTILES_URL}"
 packages:
-  - name: pmtiles
+  - name: protomaps
     functions:
-      - name: zxy
+      - name: tiles
         runtime: 'nodejs:18'
+        limits:
+          timeout: 5000
+          memory: 1024

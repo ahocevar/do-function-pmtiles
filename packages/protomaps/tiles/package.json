@@ -1,8 +1,8 @@
 {
-  "name": "pmtiles",
+  "name": "protomaps",
   "version": "1.0.0",
   "type": "module",
-  "description": "PMTiles ZXY serverless",
+  "description": "Protomaps tiles serverless",
   "main": "index.js",
   "dependencies": {
     "pmtiles": "^3.2.0"
