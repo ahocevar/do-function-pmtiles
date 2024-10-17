@@ -6,5 +6,5 @@ packages:
       - name: tiles
         runtime: 'nodejs:18'
         limits:
-          timeout: 5000
+          timeout: 10000
           memory: 256
