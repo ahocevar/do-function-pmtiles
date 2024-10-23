@@ -50,10 +50,7 @@ export async function main(event, context) {
         "Content-Type": contentTypes[pmHeader.tileType],
         "ETag": pmHeader.etag
       },
-      body: btoa(
-        new Uint8Array(tileResult.data)
-          .reduce((data, byte) => data + String.fromCharCode(byte), '')
-      )
+      body: Buffer.from(tileResult.data).toString('base64')
     }
   } catch (err) {
     return {
